@@ -17,10 +17,11 @@ services:
     restart: always
 
   mysql:
-    image: mariadb:${MARIADB_VERSION:-latest}
+    image: mysql:${MARIADB_VERSION:-latest}
     container_name: mysql
     volumes:
       - ./mysql:/var/lib/mysql
+      - ./mysql_conf/my.cnf:/etc/mysql/my.cnf
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-password}
       - MYSQL_USER=${MYSQL_USER:-root}
